@@ -1,9 +1,12 @@
 import Image from "next/image";
+import { Inter } from "next/font/google";
+import { useReactMediaRecorder } from "react-media-recorder";
 import dynamic from "next/dynamic";
 import { useRef, useEffect, useState } from "react";
 import { BsFillRecord2Fill, BsFillStopFill, BsStopFill } from "react-icons/bs";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { ImLoop2 } from "react-icons/im";
+import QRCode from "qrcode";
 const DynamicComponent = dynamic(
   () => import("react-media-recorder").then((mod) => mod.ReactMediaRecorder),
   {
@@ -42,6 +45,7 @@ const blobToBase64 = (blob: Blob) => {
 export default function Home() {
   const [blob, setBlob] = useState<Blob>();
   const [uploadedUrl, setUploadedUrl] = useState("");
+  const [qrCode, setQRCode] = useState("");
   return (
     <main>
       <div
@@ -109,7 +113,7 @@ export default function Home() {
                     )}
 
                     <div className="mt-2 flex justify-center items-center">
-                      {false == "recording" ? (
+                      {status == "recording" ? (
                         <button
                           onClick={() => {
                             stopRecording();
@@ -117,7 +121,7 @@ export default function Home() {
                         >
                           <BsStopFill className="hover:text-red-400 transition ease-in-out md:text-6xl text-7xl" />
                         </button>
-                      ) : false == "idle" ? (
+                      ) : status == "idle" ? (
                         <button
                           onClick={() => {
                             startRecording();
@@ -154,10 +158,18 @@ export default function Home() {
                                 }
                               ).then((res) => res.json());
                               console.log(result);
-
-                              setUploadedUrl(
-                                `https://res.cloudinary.com/dxxmohqvs/video/upload/${result.public_id}.mp4`
+                              const videoLink = `https://res.cloudinary.com/dxxmohqvs/video/upload/${result.public_id}.mp4`;
+                              const params = new URLSearchParams({
+                                video: videoLink,
+                              });
+                              const qr = await QRCode.toDataURL(
+                                `https://maggiejliu-default-losaltoshacks.dev.8thwall.app/cryans-image-target-test2?${params}`
                               );
+                              setQRCode(qr);
+
+                              // setUploadedUrl(
+                              //   `https://res.cloudinary.com/dxxmohqvs/video/upload/${result.public_id}.mp4`
+                              // );
                             }}
                           >
                             ✨ create
@@ -166,6 +178,7 @@ export default function Home() {
                       )}
                     </div>
                     {uploadedUrl}
+                    <img src={qrCode} />
                   </div>
 
                   <div className="mt-4 h-2 w-full bg-amber-800 bg-opacity-60 roudned-md" />
