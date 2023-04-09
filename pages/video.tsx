@@ -1,5 +1,5 @@
 import { ReactMediaRecorder } from "react-media-recorder";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import dynamic from "next/dynamic";
 const DynamicComponent = dynamic(
@@ -9,18 +9,58 @@ const DynamicComponent = dynamic(
   }
 );
 
+const VideoPreview = ({ stream }: { stream: MediaStream | null }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+    }
+  }, [stream]);
+  if (!stream) {
+    return null;
+  }
+  return <video ref={videoRef} width={500} height={500} autoPlay controls />;
+};
+
 const Video = () => {
   return (
     <DynamicComponent
       video
-      render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
-        <div>
-          <p>{status}</p>
-          <button onClick={startRecording}>Start Recording</button>
-          <button onClick={stopRecording}>Stop Recording</button>
-          <video src={mediaBlobUrl} controls autoPlay loop />
-        </div>
-      )}
+      render={({
+        previewStream,
+        status,
+        startRecording,
+        stopRecording,
+        mediaBlobUrl,
+      }) => {
+        return (
+          <div>
+            <div>{status}</div>
+            <button
+              onClick={() => {
+                startRecording();
+              }}
+            >
+              start recording
+            </button>
+            <button
+              onClick={() => {
+                stopRecording();
+              }}
+            >
+              stop recording
+            </button>
+            {status === "stopped" ? (
+              <video src={mediaBlobUrl} controls autoPlay loop />
+            ) : (
+              <VideoPreview stream={previewStream} />
+            )}
+          </div>
+        );
+      }}
     />
   );
 };
+
+export default Video;
