@@ -25,41 +25,7 @@ const VideoPreview = ({ stream }: { stream: MediaStream | null }) => {
 
 const Video = () => {
   return (
-    <DynamicComponent
-      video
-      render={({
-        previewStream,
-        status,
-        startRecording,
-        stopRecording,
-        mediaBlobUrl,
-      }) => {
-        return (
-          <div>
-            <div>{status}</div>
-            <button
-              onClick={() => {
-                startRecording();
-              }}
-            >
-              start recording
-            </button>
-            <button
-              onClick={() => {
-                stopRecording();
-              }}
-            >
-              stop recording
-            </button>
-            {status === "stopped" ? (
-              <video src={mediaBlobUrl} controls autoPlay loop />
-            ) : (
-              <VideoPreview stream={previewStream} />
-            )}
-          </div>
-        );
-      }}
-    />
+
   );
 };
 
