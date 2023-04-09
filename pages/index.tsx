@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useReactMediaRecorder } from "react-media-recorder";
 import dynamic from "next/dynamic";
 import { useRef, useEffect, useState } from "react";
 import { BsFillRecord2Fill, BsFillStopFill, BsStopFill } from "react-icons/bs";
@@ -44,7 +42,6 @@ const blobToBase64 = (blob: Blob) => {
 
 export default function Home() {
   const [blob, setBlob] = useState<Blob>();
-  const [uploadedUrl, setUploadedUrl] = useState("");
   const [qrCode, setQRCode] = useState("");
   return (
     <main>
@@ -166,10 +163,6 @@ export default function Home() {
                                 `https://maggiejliu-default-losaltoshacks.dev.8thwall.app/cryans-image-target-test2?${params}`
                               );
                               setQRCode(qr);
-
-                              // setUploadedUrl(
-                              //   `https://res.cloudinary.com/dxxmohqvs/video/upload/${result.public_id}.mp4`
-                              // );
                             }}
                           >
                             ✨ create
@@ -177,7 +170,6 @@ export default function Home() {
                         </div>
                       )}
                     </div>
-                    {uploadedUrl}
                     <img src={qrCode} />
                   </div>
 

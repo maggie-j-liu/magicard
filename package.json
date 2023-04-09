@@ -27,6 +27,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.5.0",
     "@types/react-video-recorder": "^3.19.0"
   }
 }
