@@ -75,6 +75,10 @@ export default function Home() {
                           <BsFillRecord2Fill className="text-red-500 animate-pulse" />
                         </div>
                       </>
+                    ) : status == "stopped" ? (
+                      <div className="-mb-14 ml-4 p-1.5 rounded-lg relative font-bold font-serif w-fit bg-orange-200 bg-opacity-100">
+                        preview
+                      </div>
                     ) : (
                       <></>
                     )}
@@ -82,12 +86,14 @@ export default function Home() {
 
                   <div className=" p-2 border-2 border-yellow-700 rounded-lg">
                     {status === "stopped" ? (
-                      <video
-                        className="rounded-lg"
-                        src={mediaBlobUrl}
-                        controls
-                        autoPlay
-                      />
+                      <div>
+                        <video
+                          className="rounded-lg"
+                          src={mediaBlobUrl}
+                          controls
+                          autoPlay
+                        />
+                      </div>
                     ) : (
                       <VideoPreview stream={previewStream} />
                     )}
@@ -145,6 +151,7 @@ export default function Home() {
                     Print out the greeting card that you receive and send it to
                     a friend!
                   </p>
+
                   <Image
                     src="/howto/giving.jpg"
                     width={300}
