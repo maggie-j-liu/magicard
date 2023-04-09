@@ -233,7 +233,7 @@ export default function Home() {
                                   });
 
                                   const qr = await QRCode.toDataURL(
-                                    `https://maggiejliu-default-losaltoshacks.dev.8thwall.app/cryans-image-target-test2?${params}`
+                                    `https://losaltoshacks.8thwall.app/cryans-image-target-test2?${params}`
                                   );
 
                                   if (previewImage == "") {
