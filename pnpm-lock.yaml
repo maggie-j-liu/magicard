@@ -7,6 +7,7 @@ specifiers:
   '@types/react-dom': 18.0.11
   '@types/react-video-recorder': ^3.19.0
   autoprefixer: 10.4.14
+  browser-image-resizer: ^2.4.1
   cloudinary: ^1.35.0
   eslint: 8.38.0
   eslint-config-next: 13.3.0
@@ -25,6 +26,7 @@ dependencies:
   '@types/react': 18.0.33
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.14_postcss@8.4.21
+  browser-image-resizer: 2.4.1
   cloudinary: 1.35.0
   eslint: 8.38.0
   eslint-config-next: 13.3.0_voubu7prgxjfsfbgx5d4sqnwiy
@@ -543,6 +545,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       fill-range: 7.0.1
+    dev: false
+
+  /browser-image-resizer/2.4.1:
+    resolution: {integrity: sha512-gqrmr7+NTI9FgZVVyw/GIqwJE3MhNWaBn1R5ptu75r+/M5ncyntSMQYuYhOPonm44qQNnkGN9cnghlpd9h1Hug==}
     dev: false
 
   /browserslist/4.21.5:
