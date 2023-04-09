@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useReactMediaRecorder } from "react-media-recorder";
 import dynamic from "next/dynamic";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { BsFillRecord2Fill, BsFillStopFill, BsStopFill } from "react-icons/bs";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { ImLoop2 } from "react-icons/im";
@@ -33,8 +31,17 @@ const VideoPreview = ({ stream }: { stream: MediaStream | null }) => {
     />
   );
 };
+const blobToBase64 = (blob: Blob) => {
+  return new Promise((resolve, _) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+};
 
 export default function Home() {
+  const [blob, setBlob] = useState<Blob>();
+  const [uploadedUrl, setUploadedUrl] = useState("");
   return (
     <main>
       <div
@@ -59,6 +66,9 @@ export default function Home() {
         <div className="mt-12 flex justify-center items-center">
           <DynamicComponent
             video
+            onStop={(_, b) => {
+              setBlob(b);
+            }}
             render={({
               previewStream,
               status,
@@ -89,7 +99,7 @@ export default function Home() {
                       <div>
                         <video
                           className="rounded-lg"
-                          src={mediaBlobUrl}
+                          src={mediaBlobUrl ?? ""}
                           controls
                           autoPlay
                         />
@@ -99,7 +109,7 @@ export default function Home() {
                     )}
 
                     <div className="mt-2 flex justify-center items-center">
-                      {status == "recording" ? (
+                      {false == "recording" ? (
                         <button
                           onClick={() => {
                             stopRecording();
@@ -107,7 +117,7 @@ export default function Home() {
                         >
                           <BsStopFill className="hover:text-red-400 transition ease-in-out md:text-6xl text-7xl" />
                         </button>
-                      ) : status == "idle" ? (
+                      ) : false == "idle" ? (
                         <button
                           onClick={() => {
                             startRecording();
@@ -116,15 +126,46 @@ export default function Home() {
                           <AiFillPlayCircle className="hover:text-red-400 transition ease-in-out md:text-5xl text-6xl" />
                         </button>
                       ) : (
-                        <button
-                          onClick={() => {
-                            startRecording();
-                          }}
-                        >
-                          <ImLoop2 className="py-2 hover:text-red-400 transition ease-in-out md:text-5xl text-6xl" />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => {
+                              startRecording();
+                            }}
+                          >
+                            <ImLoop2 className="text-yellow-800 py-2 hover:text-red-400 transition ease-in-out md:text-5xl text-6xl" />
+                          </button>
+                          <button
+                            className="px-4 py-1.5 bg-amber-800 bg-opacity-30 hover:bg-opacity-50 duration-150 hover:duration-100 rounded-md"
+                            onClick={async () => {
+                              const file = (await blobToBase64(
+                                blob!
+                              )) as string;
+                              const formData = new FormData();
+                              formData.append("file", file);
+                              formData.append(
+                                "upload_preset",
+                                "unsigned_preset"
+                              );
+                              const result = await fetch(
+                                "https://api.cloudinary.com/v1_1/dxxmohqvs/auto/upload",
+                                {
+                                  method: "POST",
+                                  body: formData,
+                                }
+                              ).then((res) => res.json());
+                              console.log(result);
+
+                              setUploadedUrl(
+                                `https://res.cloudinary.com/dxxmohqvs/video/upload/${result.public_id}.mp4`
+                              );
+                            }}
+                          >
+                            ✨ create
+                          </button>
+                        </div>
                       )}
                     </div>
+                    {uploadedUrl}
                   </div>
 
                   <div className="mt-4 h-2 w-full bg-amber-800 bg-opacity-60 roudned-md" />
