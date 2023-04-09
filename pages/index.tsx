@@ -145,12 +145,24 @@ export default function Home() {
                     Print out the greeting card that you receive and send it to
                     a friend!
                   </p>
+                  <Image
+                    src="/howto/giving.jpg"
+                    width={300}
+                    height={500}
+                    className="mt-2 shadow-lg rounded-lg border border-black"
+                  />
                   <div className="mt-4 h-1 w-full bg-red-800 bg-opacity-40 roudned-md" />
                   <p className="font-bold text-2xl mt-4 font-serif">3.</p>
                   <p className="font-serif">
                     When your friend scans your picture, they&apos;be able to
                     see your video in AR!
                   </p>
+                  <Image
+                    src="/howto/watching.jpg"
+                    width={300}
+                    height={500}
+                    className="mt-2 shadow-lg rounded-lg border border-black"
+                  />
                 </div>
               );
             }}
