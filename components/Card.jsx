@@ -41,15 +41,6 @@ const Card = ({ message = "", preview, qrCode }) => {
   };
   return (
     <div className="py-16 px-8 overflhow-x-hidden">
-      <button onClick={handlePrint}>Print this out!</button>
-
-      <p className="text-lg font-serif">Cover: </p>
-      <input
-        type="text"
-        onChange={handleTitleChange}
-        className="z-50 rounded-lg"
-        defaultValue={title}
-      />
       <div
         className="relative flex flex-col items-center w-full"
         style={{ perspective: 1000 }}
@@ -65,18 +56,19 @@ const Card = ({ message = "", preview, qrCode }) => {
             className="text-center flex flex-col items-center"
           >
             <h1 className="text-center text-sm leading-none sm:leading-normal font-serif sm:text-3xl font-bold">
-              <p>Recipient:</p>
+              <p>Your message:</p>
               <input
                 type="text"
                 onChange={handleTitleChange}
-                className="z-50 rounded-lg text-2xl text-center"
+                className="border-amber-500 border-2 focus:outline-none focus:border-amber-700 z-50 rounded-lg text-2xl text-center"
                 defaultValue={title}
               />
             </h1>
-            <button onClick={handlePrint}>
-              {" "}
+            <button
+              onClick={handlePrint}
+              className="py-1.5 my-4 text-xs sm:text-xl bg-amber-700/30 hover:bg-amber-700/50 duration-200 hover:duration-100 rounded-md px-4"
+            >
               Print this out!
-              <h2 className="text-xs sm:text-xl font-light">Print this out!</h2>
             </button>
             <div className="text-gray-500 text-xs sm:text-base">
               Tap the card to open
@@ -100,24 +92,26 @@ const Card = ({ message = "", preview, qrCode }) => {
         </div>
 
         <div
-          className="overflow-visible hidden print:block w-full h-[30rem] bg-white"
+          className="overflow-visible hidden print:block w-full bg-white"
           ref={componentRef}
         >
-          <div className="border-slate-500 border-4 w-full flex flex-col items-center justify-center h-[5.5in]">
-            <h1 className="rotate-180 text-center font-bold font-serif text-2xl">
-              {title}
-            </h1>
+          <div className="h-[5.5in] p-8">
+            <div className="border-slate-500 border-4 w-full flex flex-col items-center justify-center h-full">
+              <h1 className="rotate-180 text-center font-bold font-serif text-2xl">
+                {title}
+              </h1>
+            </div>
           </div>
           <div className="h-[5.5in]"></div>
           <div className="h-[11in] w-screen flex flex-col items-center justify-center">
-            <div className="h-[5.5in] flex flex-col items-center justify-center">
-              <p className="text-sm text-center">
-                scan for a special message ✨
-              </p>
-              <img
-                src={qrCode}
-                className={"border-2 text-center border-black rounded-lg"}
-              />
+            <div className="h-[5.5in] w-[8.5in] flex flex-col items-center justify-center">
+              <p className="text-center">scan for a special message ✨</p>
+              <div className="w-1/4">
+                <img
+                  src={qrCode}
+                  className={"border-2 text-center border-black rounded-lg"}
+                />
+              </div>
             </div>
             <div className="h-[5.5in]">
               <div className="">
@@ -167,12 +161,14 @@ const Card = ({ message = "", preview, qrCode }) => {
                 transform: "rotateX(180deg)",
               }}
             >
-              <div className="flex justify-center items-center">
-                <div className="w-1/4">
-                  <p className="mt-12 text-sm text-center">Scan me! </p>
+              <div className="flex flex-col justify-center items-center">
+                <p className="mt-12 text-sm text-center">
+                  scan for a special message ✨
+                </p>
+                <div className="w-1/4 mt-2">
                   <img
                     src={qrCode}
-                    className={"border-2 border-black roudned-lg"}
+                    className={"border-2 border-black rounded-lg"}
                   />
                 </div>
               </div>

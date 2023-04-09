@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hide-on-print :not(.show-on-print) {
+  @apply hidden;
+}
