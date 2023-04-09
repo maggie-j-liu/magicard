@@ -162,7 +162,7 @@ const Card = ({ message = "", preview, qrCode }) => {
           }}
         >
           <div className="flex justify-center items-center max-w-none whitespace-pre-wrap p-2 sm:p-4 pt-0 text-xs sm:text-base w-full h-full prose">
-            <div className="w-2/4 h-full -mt-4 ">
+            <div className="w-3/4 h-full -mt-4 ">
               <img src={preview} />
             </div>
           </div>
