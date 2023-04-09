@@ -23,7 +23,7 @@ const textVariants = {
 };
 
 const Card = ({ message = "", preview, qrCode }) => {
-  const [title, setTitle] = useState("dear john,");
+  const [title, setTitle] = useState("greetings!");
   const controls = useAnimation();
   const [open, setOpen] = useState(false);
   const [letter, setLetter] = useState("hi john. how are you?");
@@ -100,36 +100,27 @@ const Card = ({ message = "", preview, qrCode }) => {
         </div>
 
         <div
-          className="overflow-visible hidden print:block  w-full h-[30rem] bg-white"
+          className="overflow-visible hidden print:block w-full h-[30rem] bg-white"
           ref={componentRef}
         >
-          <div className="border-slate-500 border-4 w-full h-1/2 flex flex-col items-center justify-center">
+          <div className="border-slate-500 border-4 w-full flex flex-col items-center justify-center h-[5.5in]">
             <h1 className="rotate-180 text-center font-bold font-serif text-2xl">
               {title}
             </h1>
           </div>
-
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-
-          <div className="h-3/4 w-screen flex items-center justify-center">
-            <p className=" text-sm text-center">Scan me! </p>
-            <img
-              src={qrCode}
-              className={"border-2 text-center border-black roudned-lg"}
-            />
-            <div className="h-1/2 mt-24 ">
-              <div className="w-1/2 -mt-4 right-12 fixed">
+          <div className="h-[5.5in]"></div>
+          <div className="h-[11in] w-screen flex flex-col items-center justify-center">
+            <div className="h-[5.5in] flex flex-col items-center justify-center">
+              <p className="text-sm text-center">
+                scan for a special message ✨
+              </p>
+              <img
+                src={qrCode}
+                className={"border-2 text-center border-black rounded-lg"}
+              />
+            </div>
+            <div className="h-[5.5in]">
+              <div className="">
                 <img src={preview} />
               </div>
             </div>
