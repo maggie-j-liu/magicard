@@ -252,6 +252,7 @@ export default function Home() {
                     </p>
 
                     <Image
+                      alt="How to record a video"
                       src="/howto/recordavideo.png"
                       width={300}
                       height={500}
@@ -265,6 +266,7 @@ export default function Home() {
                     </p>
 
                     <Image
+                      alt="Print out the greeting card"
                       src="/howto/giving.jpg"
                       width={300}
                       height={500}
@@ -277,6 +279,7 @@ export default function Home() {
                       see your video in AR!
                     </p>
                     <Image
+                      alt="Send it to a friend"
                       src="/howto/watching.jpg"
                       width={300}
                       height={500}
