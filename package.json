@@ -19,7 +19,11 @@
     "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-video-recorder": "^3.19.4",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/react-video-recorder": "^3.19.0"
   }
 }
