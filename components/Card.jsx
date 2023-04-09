@@ -69,19 +69,15 @@ const Card = ({ message = "", preview, qrCode }) => {
           <br />
           <br />
 
-          <div className="h-3/4 w-screen ">
-            <div className="w-1/6 ml-2 mt-24 ">
-              <div className="flex items-center fixed left-1 justify-center">
-                <p className=" text-sm text-center">Scan me! </p>
-                <img
-                  src={qrCode}
-                  className={"border-2 text-center border-black roudned-lg"}
-                />
-              </div>
-              <div className="h-1/2 mt-24 ">
-                <div className="w-1/2 -mt-4 right-12 fixed">
-                  <img src={preview} className="-rotate-90" />
-                </div>
+          <div className="h-3/4 w-screen flex items-center justify-center">
+            <p className=" text-sm text-center">Scan me! </p>
+            <img
+              src={qrCode}
+              className={"border-2 text-center border-black roudned-lg"}
+            />
+            <div className="h-1/2 mt-24 ">
+              <div className="w-1/2 -mt-4 right-12 fixed">
+                <img src={preview} className="-rotate-90" />
               </div>
             </div>
           </div>
@@ -167,7 +163,7 @@ const Card = ({ message = "", preview, qrCode }) => {
         >
           <div className="flex justify-center items-center max-w-none whitespace-pre-wrap p-2 sm:p-4 pt-0 text-xs sm:text-base w-full h-full prose">
             <div className="w-2/4 h-full -mt-4 ">
-              <img src={preview} className="-rotate-90" />
+              <img src={preview} />
             </div>
           </div>
         </div>

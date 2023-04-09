@@ -11,6 +11,7 @@ specifiers:
   cloudinary: ^1.35.0
   eslint: 8.38.0
   eslint-config-next: 13.3.0
+  framer-motion: ^10.11.2
   next: 13.3.0
   postcss: 8.4.21
   qrcode: ^1.5.1
@@ -18,6 +19,7 @@ specifiers:
   react-dom: 18.2.0
   react-icons: ^4.8.0
   react-media-recorder: ^1.4.0
+  react-to-print: ^2.14.12
   tailwindcss: 3.3.1
   typescript: 5.0.4
 
@@ -30,6 +32,7 @@ dependencies:
   cloudinary: 1.35.0
   eslint: 8.38.0
   eslint-config-next: 13.3.0_voubu7prgxjfsfbgx5d4sqnwiy
+  framer-motion: 10.11.2_biqbaboplfbrettd7655fr4n2y
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
   qrcode: 1.5.1
@@ -37,6 +40,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
   react-media-recorder: 1.4.0
+  react-to-print: 2.14.12_biqbaboplfbrettd7655fr4n2y
   tailwindcss: 3.3.1_postcss@8.4.21
   typescript: 5.0.4
 
@@ -52,6 +56,19 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
     dev: false
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize/0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    dev: false
+    optional: true
 
   /@eslint-community/eslint-utils/4.4.0_eslint@8.38.0:
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -1334,6 +1351,24 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: false
 
+  /framer-motion/10.11.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-IrwuC9regNOU99JoM/Z62CAMA3awGV6AcF7e3bcgXk/ZoNlGSt5aVq0J7UAwtLmCkwVlRvBkiMnvv2mZ1GW2pg==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tslib: 2.5.0
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
   /fs-extra/8.1.0:
     resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
     engines: {node: '>=6 <7 || >=8'}
@@ -2498,6 +2533,17 @@ packages:
 
   /react-media-recorder/1.4.0:
     resolution: {integrity: sha512-3lc2LsS6TUG03tmbVd9Fnh7l1+YtbGy5Z+CYQA8zkJuGdroarLXxFExPXu0RqLFbomedD+Axp3pKuNrfIBmHtw==}
+    dev: false
+
+  /react-to-print/2.14.12_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-qFJAwvDFd95Z+FWNqitt+HaB1/z+Zdd0MMrNOPUSus3fG32vqv512yB+HXhQ94J3HKoyqaIg44v0Zfc6xUBqlg==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:
