@@ -108,7 +108,7 @@ export default function Home() {
                       console.log(result);
                       const imageUrl = `https://res.cloudinary.com/dxxmohqvs/image/upload/c_fill,h_640,w_480,a_90/${result.public_id}.jpg`;
                       setImage(imageUrl);
-                      const previewImageUrl = `https://res.cloudinary.com/dxxmohqvs/image/upload/c_fill,h_480,w_640,a_/${result.public_id}.jpg`;
+                      const previewImageUrl = `https://res.cloudinary.com/dxxmohqvs/image/upload/c_fill,h_480,w_640/${result.public_id}.jpg`;
                       setPreviewImage(previewImageUrl);
                     }}
                   ></input>
