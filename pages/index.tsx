@@ -120,6 +120,37 @@ export default function Home() {
                       )}
                     </div>
                   </div>
+
+                  <div className="mt-4 h-2 w-full bg-amber-800 bg-opacity-60 roudned-md" />
+
+                  <div className="font-serif text-3xl mt-4 font-semibold">
+                    How it works.
+                  </div>
+                  <div className="mt-4 h-1 w-full bg-red-800 bg-opacity-40 roudned-md" />
+
+                  <p className="font-bold text-2xl mt-4 font-serif">1.</p>
+                  <p className="font-serif text-xl">
+                    Record a message with the video recorder above!
+                  </p>
+
+                  <Image
+                    src="/howto/recordavideo.png"
+                    width={300}
+                    height={500}
+                    className="mt-2 shadow-lg rounded-lg border border-black"
+                  />
+                  <div className="mt-4 h-1 w-full bg-red-800 bg-opacity-40 roudned-md" />
+                  <p className="font-bold text-2xl mt-4 font-serif">2.</p>
+                  <p className="font-serif">
+                    Print out the greeting card that you receive and send it to
+                    a friend!
+                  </p>
+                  <div className="mt-4 h-1 w-full bg-red-800 bg-opacity-40 roudned-md" />
+                  <p className="font-bold text-2xl mt-4 font-serif">3.</p>
+                  <p className="font-serif">
+                    When your friend scans your picture, they&apos;be able to
+                    see your video in AR!
+                  </p>
                 </div>
               );
             }}
