@@ -42,10 +42,63 @@ const Card = ({ message = "", preview, qrCode }) => {
   return (
     <div className="py-16 px-8 overflhow-x-hidden">
       <button onClick={handlePrint}>Print this out!</button>
+
+      <p className="text-lg font-serif">Cover: </p>
+      <input
+        type="text"
+        onChange={handleTitleChange}
+        className="z-50 rounded-lg"
+        defaultValue={title}
+      />
       <div
         className="relative flex flex-col items-center w-full"
         style={{ perspective: 1000 }}
       >
+        <div className="absolute w-full sm:w-2/3 max-w-2xl aspect-video flex flex-col items-center justify-center">
+          <motion.div
+            variants={textVariants}
+            initial="closed"
+            animate={controls}
+            transition={{
+              duration: 2,
+            }}
+            className="text-center flex flex-col items-center"
+          >
+            <h1 className="text-center text-sm leading-none sm:leading-normal font-serif sm:text-3xl font-bold">
+              <p>Recipient:</p>
+              <input
+                type="text"
+                onChange={handleTitleChange}
+                className="z-50 rounded-lg text-2xl text-center"
+                defaultValue={title}
+              />
+            </h1>
+            <button onClick={handlePrint}>
+              {" "}
+              Print this out!
+              <h2 className="text-xs sm:text-xl font-light">Print this out!</h2>
+            </button>
+            <div className="text-gray-500 text-xs sm:text-base">
+              Tap the card to open
+            </div>
+            <div className="translate-y-1 sm:translate-y-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 sm:h-8 sm:w-8 text-gray-400 animate-bounce stroke-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M16 17l-4 4m0 0l-4-4m4 4V3"
+                />
+              </svg>
+            </div>
+          </motion.div>
+        </div>
+
         <div
           className="overflow-visible hidden print:block  w-full h-[30rem] bg-white"
           ref={componentRef}
@@ -77,19 +130,12 @@ const Card = ({ message = "", preview, qrCode }) => {
             />
             <div className="h-1/2 mt-24 ">
               <div className="w-1/2 -mt-4 right-12 fixed">
-                <img src={preview} className="-rotate-90" />
+                <img src={preview} />
               </div>
             </div>
           </div>
         </div>
-        Cover:{" "}
-        <input
-          type="text"
-          onChange={handleTitleChange}
-          className="z-50"
-          defaultValue={title}
-        />
-        <div className="absolute w-full sm:w-2/3 max-w-2xl aspect-video flex flex-col items-center justify-center">
+        <div className="absolute w-full sm:w-2/3 max-w-2xl flex flex-col items-center justify-center">
           <motion.div
             variants={textVariants}
             initial="closed"
